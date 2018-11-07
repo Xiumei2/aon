@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @cardholder.name
+%p
+  %b Email:
+  = @cardholder.email
+%p
+  %b Birthday:
+  = @cardholder.birthday
+%p
+  %b Card number:
+  = @cardholder.card_number
+%p
+  %b Balance:
+  = @cardholder.balance
+%p
+  %b Debit:
+  = @cardholder.debit
+%p
+  %b Credit:
+  = @cardholder.credit
+
+= link_to 'Edit', edit_cardholder_path(@cardholder)
+\|
+= link_to 'Back', cardholders_path

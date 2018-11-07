@@ -1,0 +1,16 @@
+- if @card_holder["aondetail"].length > 0
+    .mdl-textfield.mdl-js-textfield
+        %label
+            Records:
+            - @card_holder["aondetail"].each do |record|
+                %p 
+                    Gambled 
+                    = record["bid"]
+                    points. Rolled
+                    = record["roll"]
+                    and won 
+                    - if record["win"]
+                        = (record["bid"].to_f * 2).to_i
+                    - else
+                        = (record["bid"].to_f - record["bid"].to_f * 2).to_i
+                    points.

@@ -1,0 +1,32 @@
+- if @card_holder != nil
+    .mdl-card__supporting-text
+        .row
+            .col-xs-6
+                .mdl-textfield.mdl-js-textfield
+                    %label= @card_holder["name"]
+                .mdl-textfield.mdl-js-textfield
+                    %label
+                        Balance:
+                        = @card_holder["balance"]
+                .mdl-textfield.mdl-js-textfield
+                    %label
+                        Debit Points:
+                        = @card_holder["debit"]
+                .mdl-textfield.mdl-js-textfield
+                    %label
+                        Credit Points:
+                        = @card_holder["credit"]
+                = form_tag("start", method: "post", remote: false) do
+                    %input{:type=>"hidden", :name=>"cardNumber", :value=>"#{@card_holder['card_number']}"}
+                    .mdl-card__supporting-text
+                        .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+                            %label.mdl-textfield__label How many points to gamble?
+                            %input.mdl-textfield__input{:type => "number", :name => "bid"}
+                        .mdl-textfield.mdl-js-textfield
+                            - if flash[:notice] != nil
+                                %p#notice= flash[:notice]
+                    .mdl-card__actions
+                        = link_to "Abort","/allornothing",:class=>"mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                        %button.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--colored{:type => "submit"} Start
+            .col-xs-6
+                = render :partial => "aondetail"

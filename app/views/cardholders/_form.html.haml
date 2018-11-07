@@ -1,0 +1,31 @@
+= form_for @cardholder do |f|
+  - if @cardholder.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@cardholder.errors.count, "error")} prohibited this cardholder from being saved:"
+      %ul
+        - @cardholder.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :email
+    = f.text_field :email
+  .field
+    = f.label :birthday
+    = f.date_select :birthday
+  .field
+    = f.label :card_number
+    = f.text_field :card_number
+  .field
+    = f.label :balance
+    = f.number_field :balance
+  .field
+    = f.label :debit
+    = f.number_field :debit
+  .field
+    = f.label :credit
+    = f.number_field :credit
+  .actions
+    = f.submit 'Save'

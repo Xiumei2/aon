@@ -1,0 +1,33 @@
+%h1 Listing cardholders
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Email
+      %th Birthday
+      %th Card number
+      %th Balance
+      %th Debit
+      %th Credit
+      %th
+      %th
+      %th
+
+  %tbody
+    - @cardholders.each do |cardholder|
+      %tr
+        %td= cardholder.name
+        %td= cardholder.email
+        %td= cardholder.birthday
+        %td= cardholder.card_number
+        %td= cardholder.balance
+        %td= cardholder.debit
+        %td= cardholder.credit
+        %td= link_to 'Show', cardholder
+        %td= link_to 'Edit', edit_cardholder_path(cardholder)
+        %td= link_to 'Destroy', cardholder, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Cardholder', new_cardholder_path

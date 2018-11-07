@@ -1,0 +1,27 @@
+%h1 Listing aondetails
+
+%table
+  %thead
+    %tr
+      %th Cardholder
+      %th Roll
+      %th Bid
+      %th Win
+      %th
+      %th
+      %th
+
+  %tbody
+    - @aondetails.each do |aondetail|
+      %tr
+        %td= aondetail.cardholder
+        %td= aondetail.roll
+        %td= aondetail.bid
+        %td= aondetail.win
+        %td= link_to 'Show', aondetail
+        %td= link_to 'Edit', edit_aondetail_path(aondetail)
+        %td= link_to 'Destroy', aondetail, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Aondetail', new_aondetail_path

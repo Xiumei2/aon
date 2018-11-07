@@ -1,0 +1,23 @@
+%header.mdl-layout__header.row
+    .row
+        .col-md-2
+            %img{"src"=>"/images/happydice.jpg"}
+        .col-md-8.title
+            %h1 ALL / NOTHING
+            %H4 If you roll an even number, your point will be doubled, else you lose all your points. 
+
+%center
+    .demo-card-wide.mdl-card.mdl-shadow--2dp
+        .mdl-card__supporting-text
+            - unless @card_holder != nil
+                = form_tag("allornothing/load", method: "post", remote: false) do
+                    .mdl-card__supporting-text
+                        .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+                            %label.mdl-textfield__label Card Number
+                            %input.mdl-textfield__input{:type => "text", :name =>"cardNumber"}
+                        .mdl-textfield.mdl-js-textfield
+                            - if flash[:alert] != nil
+                                %p#notice= flash[:alert]
+                    .mdl-card__actions
+                        %button.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--colored{:type => "submit"} Check Credit
+            = render :partial => "cardholder"

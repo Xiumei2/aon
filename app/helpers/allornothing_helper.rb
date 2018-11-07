@@ -1,0 +1,2 @@
+module AllornothingHelper
+end

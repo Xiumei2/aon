@@ -1,0 +1,22 @@
+= form_for @aondetail do |f|
+  - if @aondetail.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@aondetail.errors.count, "error")} prohibited this aondetail from being saved:"
+      %ul
+        - @aondetail.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :cardholder
+    = f.text_field :cardholder
+  .field
+    = f.label :roll
+    = f.number_field :roll
+  .field
+    = f.label :bid
+    = f.number_field :bid
+  .field
+    = f.label :win
+    = f.check_box :win
+  .actions
+    = f.submit 'Save'

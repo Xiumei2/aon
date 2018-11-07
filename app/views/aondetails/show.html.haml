@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Cardholder:
+  = @aondetail.cardholder
+%p
+  %b Roll:
+  = @aondetail.roll
+%p
+  %b Bid:
+  = @aondetail.bid
+%p
+  %b Win:
+  = @aondetail.win
+
+= link_to 'Edit', edit_aondetail_path(@aondetail)
+\|
+= link_to 'Back', aondetails_path
